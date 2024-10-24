@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мизуэначке</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            text-align: center;
+        }
+        .carousel {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            position: relative;
+            border: 2px solid #ffb3b3;
+            margin-bottom: 20px;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .controls button {
+            background-color: rgba(255, 182, 193, 0.8);
+            border: none;
+            color: #d6336c;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+        }
+        #prev {
+            left: 10px;
+        }
+        #next {
+            right: 10px;
+        }
+        .controls button:hover {
+            background-color: rgba(255, 182, 193, 1);
+        }
+        .text {
+            font-size: 2em;
+            color: #d6336c;
+            font-family: 'Cursive', sans-serif;
+            margin: 20px 0;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png');
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхняя надпись -->
+    <div class="text">ЛАП,</div>
+
+    <!-- Галерея -->
+    <div class="carousel">
+        <!-- Подключение изображений без пути -->
+        <img src="1.jpg" class="active" alt="1">
+        <img src="2.jpg" alt="2">
+        <img src="3.jpg" alt="3">
+        <img src="4.png" alt="4">
+        <img src="5.png" alt="5">
+        <img src="6.png" alt="6">
+        <img src="7.png" alt="7">
+        <img src="8.png" alt="8">
+        <img src="9.jpg" alt="9">
+        <img src="10.png" alt="10">
+        <img src="11.png" alt="11">
+        <img src="12.jpg" alt="12">
+        <img src="13.png" alt="13">
+        <img src="14.jpg" alt="14">
+        <img src="15.png" alt="15">
+        <img src="16.png" alt="16">
+        <img src="17.jpg" alt="17">
+        <img src="18.jpg" alt="18">
+        <img src="19.jpg" alt="19">
+        <img src="20.jpg" alt="20">
+        <img src="21.jpg" alt="21">
+        <img src="22.png" alt="22">
+        <img src="23.png" alt="23">
+        <img src="24.png" alt="24">
+        <img src="25.png" alt="25">
+
+        <!-- Кнопки для перелистывания -->
+        <div class="controls">
+            <button id="prev">⟨</button>
+            <button id="next">⟩</button>
+        </div>
+    </div>
+
+    <!-- Нижняя надпись -->
+    <div class="text">МЫ?</div>
+
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
+
+        // Листание вперед
+        document.getElementById('next').addEventListener('click', () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        });
+
+        // Листание назад
+        document.getElementById('prev').addEventListener('click', () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        });
+    </script>
+
+</body>
+</html>
